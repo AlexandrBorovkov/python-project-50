@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = ""
+description = "Educational project: Difference calculator"
 authors = ["Alexandr Borovkov <mr.borovkov.prm@gmail.com>"]
 readme = "README.md"
 packages = [
@@ -10,6 +10,11 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.1.1"
+pytest-cov = "^5.0.0"
+pytest = "^8.3.3"
 
 [build-system]
 requires = ["poetry-core"]
