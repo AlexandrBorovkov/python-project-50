@@ -11,10 +11,9 @@ def main():
     parser.add_argument("second_file")
     parser.add_argument("-f", "--format", help="set format of output")
     args = parser.parse_args()
-    first_f = args.first_file
-    second_f = args.second_file
-    generate_diff(first_f)
-    generate_diff(second_f)
+    first_file = args.first_file
+    second_file = args.second_file
+    print(generate_diff(first_file, second_file))
 
 
 if __name__ == "__main__":
