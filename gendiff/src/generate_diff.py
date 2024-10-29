@@ -1,4 +1,6 @@
+import os
 import json
+import yaml
 
 
 def calculate_the_difference(data_first, data_second):
@@ -34,8 +36,14 @@ def generate_diff(path_line_1, path_line_2):
     try:
         with open(path_line_1, "r", encoding="utf-8") as first_file, \
              open(path_line_2, "r", encoding="utf-8") as second_file:
-            data_first = json.load(first_file)
-            data_second = json.load(second_file)
+            _, extension = os.path.splitext(path_line_1)
+            match extension:
+                case ".json":
+                    data_first = json.load(first_file)
+                    data_second = json.load(second_file)
+                case ".yml" | ".yaml":
+                    data_first = yaml.safe_load(first_file)
+                    data_second = yaml.safe_load(second_file)
         return calculate_the_difference(data_first, data_second)
     except FileNotFoundError:
         return "Path does not exist"

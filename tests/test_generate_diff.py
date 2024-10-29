@@ -14,8 +14,12 @@ correct_result = """{
 file_missing = "Path does not exist"
 
 
-def test_generate_diff():
+def test_generate_diff_json():
     assert generate_diff("tests/fixtures/file1.json", "tests/fixtures/file2.json") == correct_result
+
+
+def test_generate_diff_yml():
+    assert generate_diff("tests/fixtures/file1.yml", "tests/fixtures/file2.yml") == correct_result
 
 
 def test_generate_diff_file_not_found():

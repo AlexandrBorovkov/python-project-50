@@ -6,4 +6,8 @@
 
 ---
 
+#### JSON
 [![asciicast](https://asciinema.org/a/SnL2IR8B4StakEi27XFiPNr1g.png)](https://asciinema.org/a/SnL2IR8B4StakEi27XFiPNr1g)
+
+#### YAML
+[![asciicast](https://asciinema.org/a/47RQIaDLB57pZ214RzQ8dIQJL.png)](https://asciinema.org/a/47RQIaDLB57pZ214RzQ8dIQJL)
