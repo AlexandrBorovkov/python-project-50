@@ -13,7 +13,7 @@ package-install:
 package-reinstall:
 	python3 -m pip install --force-reinstall dist/*.whl
 
-gendif:
+gendiff:
 	poetry run gendiff
 
 lint:
