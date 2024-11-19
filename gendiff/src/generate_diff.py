@@ -14,6 +14,58 @@ def translating_to_a_string(dct, counter):
     return f"{{\n{",\n".join(lst)}\n{"    " * counter}}}"
 
 
+def get_string_or_value(value):
+    if isinstance(value, dict) or isinstance(value, list):
+        return "[complex value]"
+    return value
+
+
+def format_json(lesult_list):
+    pass
+
+
+def format_plain(result_list):
+    collection_for_result_string = []
+
+    def func_recurse(result_list, row_name=""):
+        for row in result_list:
+            match row[0]:
+                case "update":
+                    if isinstance(row[1][1], list):
+                        func_recurse(row[1][1], row_name + "." + row[1][0])
+                    else:
+                        value_1 = get_string_or_value(row[1][1])
+                        value_2 = get_string_or_value(row[1][2])
+                        if value_1 not in ["true", "false",
+                                           "null", "[complex value]"]:
+                            value_1 = f"'{value_1}'"
+                        if value_2 not in ["true", "false",
+                                           "null", "[complex value]"]:
+                            value_2 = f"'{value_2}'"
+                        string = f"Property " \
+                                 f"'{(row_name + "." + row[1][0])[1:]}' " \
+                                 f"was updated. From {value_1} " \
+                                 f"to {value_2}"
+                        collection_for_result_string.append(string)
+                case "unchanged":
+                    if isinstance(row[1][1], list):
+                        func_recurse(row[1][1], row_name + "." + row[1][0])
+                case "delete":
+                    string = f"Property '{(row_name + "." + row[1][0])[1:]}' "\
+                             f"was removed"
+                    collection_for_result_string.append(string)
+                case "added":
+                    value = get_string_or_value(row[1][1])
+                    if value not in ["true", "false",
+                                     "null", "[complex value]"]:
+                        value = f"'{value}'"
+                    string = f"Property '{(row_name + "." + row[1][0])[1:]}' " \
+                        f"was added with value: {value}"
+                    collection_for_result_string.append(string)
+    func_recurse(result_list)
+    return "\n".join(collection_for_result_string)
+
+
 def format_stylish(result_list, counter=1):
     collection_for_result_string = []
     for row in result_list:
@@ -129,7 +181,7 @@ def changing_the_value_to_json_format(dct):
     return dct
 
 
-def generate_diff(path_line_1, path_line_2, format_name="stylish"):
+def generate_diff(path_line_1, path_line_2, format_name=None):
     try:
         with open(path_line_1, "r", encoding="utf-8") as first_file, \
              open(path_line_2, "r", encoding="utf-8") as second_file:
@@ -148,7 +200,7 @@ def generate_diff(path_line_1, path_line_2, format_name="stylish"):
             case "stylish":
                 return format_stylish(result_list)
             case "plain":
-                pass
+                return format_plain(result_list)
             case "json":
                 pass
     except FileNotFoundError:

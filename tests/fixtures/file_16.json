@@ -1,0 +1,8 @@
+{
+    "timeout": 20,
+    "verbose": true,
+    "host": "hexlet.io",
+    "dogs": {"spaniel": "mashka", "taksa": "pepsi", "ovcharka": "meggi"},
+    "cats": {"brown": "muska", "grey": "barsik"},
+    "ip": {"ip_1": 13451345}
+  }
