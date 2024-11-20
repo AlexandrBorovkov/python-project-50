@@ -48,7 +48,7 @@ def test_generate_diff_format_json():
     with open("tests/fixtures/file7.txt", encoding='utf8') as file:
         data = file.read()
     assert generate_diff("tests/fixtures/file3.json", "tests/fixtures/file4.json", format_name="json") == data
-    
+
 
 def test_generate_diff_stylish():
     with open("tests/fixtures/file_12.txt", encoding='utf8') as file:
@@ -56,7 +56,7 @@ def test_generate_diff_stylish():
     assert generate_diff("tests/fixtures/file_10.json", "tests/fixtures/file_11.json", format_name="stylish") == data
 
 
-def test_generate_diff_stylish():
+def test_generate_diff_plain():
     with open("tests/fixtures/file_13.txt", encoding='utf8') as file:
         data = file.read()
     assert generate_diff("tests/fixtures/file_10.json", "tests/fixtures/file_11.json", format_name="plain") == data
