@@ -20,8 +20,9 @@ def get_string_or_value(value):
     return value
 
 
-def format_json(lesult_list):
-    pass
+def format_json(result_list):
+    json_data = json.dumps(result_list)
+    return json_data
 
 
 def format_plain(result_list):
@@ -193,15 +194,19 @@ def generate_diff(path_line_1, path_line_2, format_name=None):
                 case ".yml" | ".yaml":
                     data_first = yaml.safe_load(first_file)
                     data_second = yaml.safe_load(second_file)
-        result_list = calculate_the_difference(
-            changing_the_value_to_json_format(data_first),
-            changing_the_value_to_json_format(data_second))
         match format_name:
             case "stylish":
+                result_list = calculate_the_difference(
+                    changing_the_value_to_json_format(data_first),
+                    changing_the_value_to_json_format(data_second))
                 return format_stylish(result_list)
             case "plain":
+                result_list = calculate_the_difference(
+                    changing_the_value_to_json_format(data_first),
+                    changing_the_value_to_json_format(data_second))
                 return format_plain(result_list)
             case "json":
-                pass
+                result_list = calculate_the_difference(data_first, data_second)
+                return format_json(result_list)
     except FileNotFoundError:
         return "Path does not exist"
