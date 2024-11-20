@@ -37,11 +37,15 @@ def format_plain(result_list):
                     else:
                         value_1 = get_string_or_value(row[1][1])
                         value_2 = get_string_or_value(row[1][2])
-                        if value_1 not in ["true", "false",
-                                           "null", "[complex value]"] and not value_1.isdigit():
+                        if (value_1 not in
+                            ["true", "false",
+                             "null", "[complex value]"]
+                                and not value_1.isdigit()):
                             value_1 = f"'{value_1}'"
-                        if value_2 not in ["true", "false",
-                                           "null", "[complex value]"] and not value_2.isdigit():
+                        if (value_2 not in
+                            ["true", "false",
+                             "null", "[complex value]"]
+                                and not value_2.isdigit()):
                             value_2 = f"'{value_2}'"
                         string = f"Property " \
                                  f"'{(row_name + "." + row[1][0])[1:]}' " \
@@ -57,8 +61,10 @@ def format_plain(result_list):
                     collection_for_result_string.append(string)
                 case "added":
                     value = get_string_or_value(row[1][1])
-                    if value not in ["true", "false",
-                                     "null", "[complex value]"] and not value.isdigit():
+                    if (value not in
+                        ["true", "false", "null",
+                         "[complex value]"]
+                            and not value.isdigit()):
                         value = f"'{value}'"
                     string = f"Property '{(row_name + "." + row[1][0])[1:]}' " \
                         f"was added with value: {value}"
