@@ -38,10 +38,10 @@ def format_plain(result_list):
                         value_1 = get_string_or_value(row[1][1])
                         value_2 = get_string_or_value(row[1][2])
                         if value_1 not in ["true", "false",
-                                           "null", "[complex value]"]:
+                                           "null", "[complex value]"] and not value_1.isdigit():
                             value_1 = f"'{value_1}'"
                         if value_2 not in ["true", "false",
-                                           "null", "[complex value]"]:
+                                           "null", "[complex value]"] and not value_2.isdigit():
                             value_2 = f"'{value_2}'"
                         string = f"Property " \
                                  f"'{(row_name + "." + row[1][0])[1:]}' " \
@@ -58,7 +58,7 @@ def format_plain(result_list):
                 case "added":
                     value = get_string_or_value(row[1][1])
                     if value not in ["true", "false",
-                                     "null", "[complex value]"]:
+                                     "null", "[complex value]"] and not value.isdigit():
                         value = f"'{value}'"
                     string = f"Property '{(row_name + "." + row[1][0])[1:]}' " \
                         f"was added with value: {value}"
@@ -195,7 +195,7 @@ def generate_diff(path_line_1, path_line_2, format_name=None):
                     data_first = yaml.safe_load(first_file)
                     data_second = yaml.safe_load(second_file)
         match format_name:
-            case "stylish":
+            case "stylish" | None:
                 result_list = calculate_the_difference(
                     changing_the_value_to_json_format(data_first),
                     changing_the_value_to_json_format(data_second))
