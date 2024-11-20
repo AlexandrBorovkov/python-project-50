@@ -1,9 +1,0 @@
-{
-    "host": "hexlet.io",
-    "timeout": 50,
-    "proxy": "123.234.53.22",
-    "follow": false,
-    "dogs": {"spaniel": "mashka", "taksa": "pepsi"},
-    "cats": {"brown": "muska", "grey": "persik"},
-    "ip": {"ip_1": 13451345, "ip_2": 235135345}
-  }
