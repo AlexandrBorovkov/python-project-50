@@ -4,10 +4,10 @@ def get_string_or_value(value):
     return value
 
 
-def format_plain(result_list):
+def format_plain(result_list):  # noqa: C901
     collection_for_result_string = []
 
-    def recursive_function(result_list, row_name=""):
+    def recursive_function(result_list, row_name=""):  # noqa: C901
         for row in result_list:
             match row[0]:
                 case "update":
