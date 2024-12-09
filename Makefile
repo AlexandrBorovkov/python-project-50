@@ -17,7 +17,7 @@ gendiff:
 	poetry run gendiff
 
 lint:
-	poetry run flake8 gendiff
+	poetry run ruff check
 
 test:
 	poetry run pytest -v
@@ -27,8 +27,5 @@ test-coverage:
 
 selfcheck:
 	poetry check
-
-isort:
-	poetry run isort .
 
 check: selfcheck test lint
