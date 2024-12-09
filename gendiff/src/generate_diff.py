@@ -1,6 +1,8 @@
-import os
 import json
+import os
+
 import yaml
+
 from gendiff.output_formats.format_json import format_json
 from gendiff.output_formats.format_plain import format_plain
 from gendiff.output_formats.format_stylish import format_stylish

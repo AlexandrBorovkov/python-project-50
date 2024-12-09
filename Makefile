@@ -28,4 +28,7 @@ test-coverage:
 selfcheck:
 	poetry check
 
+isort:
+	poetry run isort .
+
 check: selfcheck test lint

@@ -1,6 +1,5 @@
 from gendiff.src.generate_diff import generate_diff
 
-
 file_missing = "Path does not exist"
 
 
