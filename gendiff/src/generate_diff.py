@@ -24,7 +24,7 @@ def generate_diff(path_line_1, path_line_2, format_name=None):
     data_second = get_file_data(path_line_2)
     if None in (data_first, data_second):
         return "Path does not exist"
-    if format_name is not "json":
+    if format_name != "json":
         data_first = replacing_values_json_format(data_first)
         data_second = replacing_values_json_format(data_second)
     tree_differences = create_tree_differences(data_first, data_second)
