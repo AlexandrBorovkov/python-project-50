@@ -9,7 +9,7 @@ def translating_to_a_string(dct, counter):
     return f"{{\n{"\n".join(lst)}\n{"    " * counter}}}"
 
 
-def format_stylish(result_list, counter=1): # noqa: C901
+def format_stylish(result_list, counter=1):  # noqa: C901
     collection_for_result_string = []
     for dct in result_list:
         match dct["type"]:
