@@ -9,7 +9,7 @@ def translating_to_a_string(dct, counter):
     return f"{{\n{"\n".join(lst)}\n{"    " * counter}}}"
 
 
-def format_stylish(result_list, counter=1):
+def format_stylish(result_list, counter=1):  # noqa: C901
     collection_for_result_string = []
     for dct in result_list:
         match dct["type"]:
@@ -23,17 +23,17 @@ def format_stylish(result_list, counter=1):
             case "added":
                 key, value = dct["key"], dct["value"]
                 if isinstance(value, dict):
-                        value = translating_to_a_string(
-                            value, counter
-                        )
+                    value = translating_to_a_string(
+                        value, counter
+                    )
                 string = f"{"    " * (counter - 1) + "  + "}{key}: {value}"
                 collection_for_result_string.append(string)
             case "delete":
                 key, value = dct["key"], dct["value"]
                 if isinstance(value, dict):
-                        value = translating_to_a_string(
-                            value, counter
-                        )
+                    value = translating_to_a_string(
+                        value, counter
+                    )
                 string = f"{"    " * (counter - 1) + "  - "}{key}: {value}"
                 collection_for_result_string.append(string)
             case "update":
@@ -41,13 +41,13 @@ def format_stylish(result_list, counter=1):
                 value_old = dct["value_old"]
                 value_new = dct["value_new"]
                 if isinstance(value_new, dict):
-                        value_new = translating_to_a_string(
-                            value_new, counter
-                        )
+                    value_new = translating_to_a_string(
+                        value_new, counter
+                    )
                 if isinstance(value_old, dict):
-                        value_old = translating_to_a_string(
-                            value_old, counter
-                        )
+                    value_old = translating_to_a_string(
+                        value_old, counter
+                    )
                 string = (
                     f"{"    " * (counter - 1) + "  - "}{key}: "
                     f"{value_old}\n"
